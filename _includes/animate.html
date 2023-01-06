@@ -1,0 +1,23 @@
+<script>
+(function() {
+    var cssAos = document.createElement('link');
+    cssAos.href = '/assets/js/animate/aos.css';
+    cssAos.rel = 'stylesheet';
+    cssAos.type = 'text/css';
+    document.getElementsByTagName('head')[0].appendChild(cssAos);
+})();
+</script>
+<noscript>
+	<link rel="stylesheet" href="/assets/js/animate/aos.css">
+</noscript>
+
+<script src="/assets/js/animate/aos.min.js"></script>
+<script>
+  AOS.init({
+  	duration: 800,
+  	delay: 100,
+  	once: true,
+  	easing: 'ease-in-sine',
+  	disable: 'mobile'
+  });
+</script>

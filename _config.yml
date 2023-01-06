@@ -1,0 +1,43 @@
+title: Cocoa Podcast
+logo: /assets/images/cocoa-logo.svg
+url: "https://shakedzy.xyz"
+baseurl: "/photo-gallery"
+
+# Podcast settings
+# Source: https://github.com/joebuhlig/Jekyll-Podcast-Feed
+podcast_url: https://cocoa.jekyll-themes.com
+podcast_album_art: /assets/
+podcast_title: Cocoa Podcast
+podcast_owner: John Doe
+podcast_email: email@example.com
+podcast_category: Technology
+podcast_subcategory_one: Software
+podcast_subcategory_two: Linux
+podcast_explicit: "no"
+podcast_author: Joe Doe
+podcast_description: Productivity stories from the trenches. What works and what I'll never do again.
+podcast_summary: John Doe walks you through real life story and then breaks down the productivity tools and techniques used. It's a great way to learn how to implement the tips and tricks that you see across the web. Productivity stories from the trenches. What works and what to never try.
+podcast_subtitle: Productivity stories from the trenches. What works and what I'll never do again.
+
+
+include:
+  - _pages
+
+exclude:
+  - vendor
+
+
+# How many podcasts would you like to show on homepage?
+paginate: 3
+paginate_path: /page:num/
+
+# sass configuration
+sass:
+  sass_dir: /assets/css/_sass
+  style: compressed
+
+# jekyll plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap

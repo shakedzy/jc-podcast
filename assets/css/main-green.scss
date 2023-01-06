@@ -1,0 +1,54 @@
+---
+---
+
+@charset "utf-8";
+
+
+$font-family-base:  Roboto, Arial, Helvetica, sans-serif;
+$header-ff: 'Abril Fatface', cursive;
+
+
+$small-fs: 15px;
+$grey-color: #888;
+
+
+//customize bootstrap theme
+// Color system
+$primary: #29b077;
+$secondary: {{site.data.settings.secondary}};
+$success: {{site.data.settings.success}};
+$info: {{site.data.settings.info}};
+$warning: {{site.data.settings.warning}};
+$danger: {{site.data.settings.danger}};
+$light: {{site.data.settings.light}};
+$dark: {{site.data.settings.dark}};
+
+// Do not remove this line
+$theme-colors: () !default;
+
+// Width of the content area
+$content-width: 800px;
+$on-palm: 600px;
+$on-laptop: 800px;
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+//@import "bootstrap/bootstrap/bootstrap.css";
+@import "bootstrap/bootstrap",
+				"breadcrumbs",
+				"green-player",
+				"syntax-highlight",
+				"table",
+				"style",
+				"custom";

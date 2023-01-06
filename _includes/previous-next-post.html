@@ -1,0 +1,15 @@
+<nav class="prev-next" aria-label="navigation">
+  <ul class="pagination pagination-lg">
+	  {% if page.previous.url %}
+  	<li class="page-item prev"><a class="page-link" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a></li>
+  	{% else %}
+  	<li class="page-item prev disabled"><a class="page-link" href="#">&laquo; Previous</a></li>
+  	{% endif %}
+
+  	{% if page.next.url %}
+    <li class="page-item next"><a class="page-link" href="{{page.next.url}}">{{page.next.title}} &raquo;</a></li>
+    {% else %}
+    <li class="page-item next disabled"><a class="page-link" href="#">Next &raquo;</a></li>
+    {% endif %}
+  </ul>
+</nav>

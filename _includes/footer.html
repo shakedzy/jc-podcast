@@ -1,0 +1,54 @@
+<!-- Site footer -->
+<footer class="site-footer mt-3 mt-md-4 mt-lg-5">
+  <div class="container-small">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="footer-logo">
+          <a href="{{'/' | relative_url}}">
+            <img class="gray d-inline-block mr-2" width="80" src="{{site.logo}}" alt="{{site.title}}">
+            <h2 class="m-0 d-inline-block">{{site.title}}</h2>
+          </a>
+          <p class="pt-2 pt-md-3 text-justify">{{site.data.settings.footer.about}}</p>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Categories</h6>
+        <ul class="footer-links">
+          {% for category in site.categories %}
+          <li><a href="{{'/categories' | relative_url}}#{{category[0] | sluggize}}">{{category[0] | capitalize}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Quick Links</h6>
+        <ul class="footer-links">
+          {% for item in site.data.settings.footer-menu %}
+          <li><a {% if item.newtab %}target="_blank" {% endif %} href="{{item.link}}" {% if item.popup
+              %}onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+              {% endif %}>{{item.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <hr class="py-1 py-md-2 py-lg-2">
+  </div>
+  <div class="container-small">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">{{site.data.settings.footer.copyright}}
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          {% for item in site.data.settings.social %}
+          <li><a class="{{item.title}}" href="{{item.link}}"><i class="fab {{item.icon}}"></i></a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

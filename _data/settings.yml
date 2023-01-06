@@ -1,0 +1,95 @@
+header-menu:
+  - title: Home
+    link: /
+
+  - title: About
+    link: /about/
+
+  - title: Contact
+    link: /contact/
+  
+  - title: Playlist
+    link: /playlist/
+
+search: true # set it false to remove search functionality
+animate: true # add animations to the elements
+disable-buy-button: false
+
+footer-menu:
+  - title: About Us
+    link: /about/
+
+  - title: Contact Us
+    link: /contact/
+
+  - title: Podcast Feed
+    link: /feed.xml
+    newtab: true
+
+    # 1. Create a feed - https://blog.webjeda.com/jekyll-subscribe-feedburner/
+    # 2. Get feed URI
+    # 3. Replace "dummy" with your URI
+  - title: Subscribe
+    link: https://feedburner.google.com/fb/a/mailverify?uri=dummy
+    popup: true
+  
+  - title: Privacy Policy
+    link: "#"
+
+
+# Signup and create a form in - https://formspree.io/
+# Get the endpoint in Integration section
+formspree-endpoint: "https://formspree.io/mdowwywy"
+
+# Disqus comments for posts
+# Get youe own disqus shortname here - https://disqus.com
+disqus: webjeda-demo
+
+social:
+  - title: facebook
+    link: https://www.facebook.com
+    icon: fa-facebook-square
+    color: "#3b5998"
+
+  - title: twitter
+    link: https:/twitter.com
+    icon: fa-twitter-square
+    color: "#00aced"
+
+  - title: instagram
+    link: https://instagram.com
+    icon: fa-instagram
+    color: "#E1306C"
+
+  - title: linkedin
+    link: https://linkedin.com
+    icon: fa-linkedin
+    color: "#0e76a8"
+
+footer:
+  about: Cocoa Podcast is Jekyll Theme made for podcasters to kickstart their podcasting website. The theme uses a w3c valid podcast feed that can be submitted to any podcast service.
+  copyright: Copyright &copy; 2020 | All Rights Reserved by <a href="/">Cocoa Podcast</a>
+
+# Color scheme
+
+color-scheme: green
+color-scheme: blue
+color-scheme: purple
+color-scheme: pink
+color-scheme: default
+
+primary: "#D2691E !default"
+secondary: "#6c757d !default"
+success: "#28a745 !default"
+info: "#17a2b8 !default"
+warning: "#ffc107 !default"
+danger: "#dc3545 !default"
+light: "#f8f9fa !default"
+dark: "#343a40 !default"
+
+
+analytics: UA-92266803-6
+
+
+# set this to false in production
+color-scheme-selector: true

@@ -1,0 +1,92 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <style>
+      .loader {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: white;
+      z-index: 99999999;
+    }
+    .lds-ring {
+      display: inline-block;
+      position: relative;
+      width: 64px;
+      height: 64px;
+      z-index: 999999999;
+      left: 46vw;
+      top:  48vh;
+    }
+    .lds-ring div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 51px;
+      height: 51px;
+      margin: 6px;
+      border: 6px solid {{site.data.settings.primary | remove: "!default"}};
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: {{site.data.settings.primary | remove: "!default"}} transparent transparent transparent;
+    }
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+    @keyframes lds-ring {
+      0% {
+      transform: rotate(0deg);
+      }
+      100% {
+      transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <link
+    id="color-scheme"
+    rel="stylesheet"
+    href="{{site.baseurl}}/assets/css/main-{{site.data.settings.color-scheme}}.css"
+  />
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="{{site.baseurl}}/assets/images/favicon.png"
+  />
+  <link rel="shortcut icon" href="{{site.baseurl}}/assets/images/favicon.png" />
+  <link
+    rel="apple-touch-icon image_src"
+    href="{{site.baseurl}}/assets/images/apple-touch-icon.png"
+  />
+
+  {% seo %}
+
+  <!-- on hover background colors for social media icons in the footer -->
+  <style>
+    {% for item in site.data.settings.social %}
+    	.{{item.title}}:hover {
+    	  background-color: {{item.color}} !important
+    	}
+    {% endfor %}
+  </style>
+
+  {% include analytics-lite.html %} {% if
+  site.data.settings.color-scheme-selector == true %}
+  <link rel="prefetch" href="{{site.baseurl}}/assets/css/main-default.css" />
+  <link rel="prefetch" href="{{site.baseurl}}/assets/css/main-blue.css" />
+  <link rel="prefetch" href="{{site.baseurl}}/assets/css/main-purple.css" />
+  <link rel="prefetch" href="{{site.baseurl}}/assets/css/main-pink.css" />
+  <link rel="prefetch" href="{{site.baseurl}}/assets/css/main-green.css" />
+  {% endif %}
+</head>

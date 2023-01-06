@@ -1,0 +1,44 @@
+---
+layout: page
+type: home
+---
+
+<div id="index-player" class="row">
+  {% for item in paginator.posts %}
+  <div class="col-12 pt-4 pt-md-5">
+    <div class="card shadow" data-aos="fade-up">
+      <div class="card-body">
+        <div class="post-index-title">
+          <a href="{{item.url}}">
+            <h2>{{item.title}}</h2>
+          </a>
+        </div>
+        <div class="meta">
+          <p class="m-0 text-muted small">{{item.date | date: '%b %d, %Y'}}</p>
+        </div>
+        <div class="row post-index-description pt-2 pt-md-3">
+          <div class="col-12 col-md-4">
+            {% if item.image %}
+            <img class="post-index-image" src="{{item.image}}" alt="{{item.title}}">
+            {% else %}
+            <img class="post-index-image" src="https://gradientjoy.com/300x400?id=50" alt="{{item.title}}">
+            {% endif %}
+          </div>
+          <div class="col-12 col-md-8 pt-2 pt-md-0">
+            <p>{{item.content | strip_html | truncate: 210 }}</p>
+          </div>
+        </div>
+      </div>
+      {% if item.podcast_link %}
+      <div class="player">
+        <audio src="{{item.podcast_link}}" preload="auto" controls></audio>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% include pagination.html %}
+
+{% include buy-button.html %}
