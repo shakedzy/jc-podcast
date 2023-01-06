@@ -1,7 +1,7 @@
 title: Cocoa Podcast
 logo: /assets/images/cocoa-logo.svg
 url: "https://shakedzy.xyz"
-baseurl: "/photo-gallery"
+baseurl: "/jc-podcast"
 
 # Podcast settings
 # Source: https://github.com/joebuhlig/Jekyll-Podcast-Feed
