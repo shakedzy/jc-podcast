@@ -1,53 +1,20 @@
 ---
 layout: default
 ---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<section class="page py-3">
-  <div class="container-small">
-    {% include breadcrumbs.html %}
-    {% if page.title %}
-      <h1>{{page.title}}</h1>
-    {% endif %}
-    {% if page.date %}
-      <div class="meta">
-      	<p class="text-muted small"><span>{{page.date | date: '%B %d, %Y'}}</span></p>
-      </div>
-    {% endif %}
-    {% if page.image %}
-    	<img class="post-image shadow" src="{{page.image}}" alt="{{page.title}}">
-    {% endif %}
-    {% if page.podcast_link %}
-    <div class="py-2 py-md-3 py-lg-4">
-      <div class="player">
-    	 <audio src="{{page.podcast_link}}" preload="auto" controls></audio>
-      </div>
-    </div>
-    {% endif %}
-    <article>
-      <main>
-        {{content}}   
-      </main>
-    </article>
-    <div class="row py-2 py-md-3">
-      <div class="col-12">
-        {% include previous-next-post.html %}
-      </div>
-    </div>
+  <header class="post-header" style="direction: rtl;">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+    <h2 class="post-paper" style="direction: ltr;"><em>{{ page.paper }} </em></h2>
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%d-%m-%Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" style="direction: rtl;">
+    {{ content }}
   </div>
-</section>
-
-<section class="py-3">
-	<div class="container-small">
-		<div class="row">
-			<div class="col-12">
-				{% include share-buttons.html %}
-			</div>
-		</div>
-		<div class="row pt-3">
-			<div class="col-12">
-				{% include disqus.html %}
-			</div>
-		</div>
-
-	</div>
-</section>
+  <center>
+    <audio controls style="width: 90%">
+      <source src="{{site.url}}{{site.baseurl}}/assets/audio/{{page.audio}}" type="audio/mpeg"></audio>
+    </audio>
+  </center>
+</article>

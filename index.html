@@ -1,44 +1,99 @@
 ---
-layout: page
-type: home
+layout: default
+title: בחדרי מאמרים
+no_menu_item: true
+permalink: /
 ---
 
-<div id="index-player" class="row">
-  {% for item in paginator.posts %}
-  <div class="col-12 pt-4 pt-md-5">
-    <div class="card shadow" data-aos="fade-up">
-      <div class="card-body">
-        <div class="post-index-title">
-          <a href="{{item.url}}">
-            <h2>{{item.title}}</h2>
-          </a>
-        </div>
-        <div class="meta">
-          <p class="m-0 text-muted small">{{item.date | date: '%b %d, %Y'}}</p>
-        </div>
-        <div class="row post-index-description pt-2 pt-md-3">
-          <div class="col-12 col-md-4">
-            {% if item.image %}
-            <img class="post-index-image" src="{{item.image}}" alt="{{item.title}}">
-            {% else %}
-            <img class="post-index-image" src="https://gradientjoy.com/300x400?id=50" alt="{{item.title}}">
-            {% endif %}
-          </div>
-          <div class="col-12 col-md-8 pt-2 pt-md-0">
-            <p>{{item.content | strip_html | truncate: 210 }}</p>
-          </div>
-        </div>
+<center><img src="{{ site.url }}{{ site.baseurl }}{{ site.logo }}" width=350></center><br>
+
+<br>
+
+<a id="slideshow_top" name="slideshow_top"></a>
+<div class="slideshow-container">
+  {% assign max_galleries_in_silde = 8 %}
+
+  {% assign count = 0 %}
+  {% assign align = "left" %}
+  {% assign gallery_count = 0 %}
+  {% for post in site.posts %}
+    {% assign mm = gallery_count | modulo: max_galleries_in_silde %}
+    {% if mm == 0 %}<div class="mySlides fade">{% endif %}
+
+    {% if count == 0 %}<div class="row" style="direction: rtl;">{% endif %}
+      <div class="half-width gallery-preview {{ align }}" style="padding-bottom: 40px; direction: rtl; border: 2px solid #555555; border-radius: 25px; padding: 15px; margin-bottom: 20px;">
+        <a class= "no-deco" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+        <h1 class="overview-gallery-title">{{ post.title }}</h1>
+        <h3 class="overview-date-title" style="color: black; direction: ltr;"><em>{{ post.paper }}</em></h3> 
+        <h3 class="overview-date-title">&nbsp;↩&nbsp;{{ post.date | date: "%d-%m-%Y" }}</h3> 
+        <p class="overview-text">{{post.content | strip_html | truncate: 210 }}</p>
+        <audio controls style="width: 100%">
+          <source src="{{site.url}}{{site.baseurl}}/assets/audio/{{post.audio}}" type="audio/mpeg"></audio>
+        </audio>
+        </a>
       </div>
-      {% if item.podcast_link %}
-      <div class="player">
-        <audio src="{{item.podcast_link}}" preload="auto" controls></audio>
+    {% if count == 1 %}</div>{% endif %}
+    {% assign count = count | plus: 1 %}
+    {% assign align = "right" %}
+    {% if count >= 2 %}
+      {% assign align = "left" %}
+      {% assign count = 0 %}
+    {% endif %}
+
+    {% assign gallery_count = gallery_count | plus: 1 %}
+    {% assign mm = gallery_count | modulo: max_galleries_in_silde %}
+    {% if mm == 0 %}
       </div>
-      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if count == 1 %}</div>{% endif %}
+  {% assign mm = gallery_count | modulo: max_galleries_in_silde %}
+  {% if mm > 0 %}
     </div>
-  </div>
+    {% assign gallery_count = gallery_count | plus: max_galleries_in_silde %}
+  {% endif %}
+  {% assign num_of_slides = gallery_count | divided_by: max_galleries_in_silde %}
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<br>
+<div style="text-align:center">
+  {% for g in (1..num_of_slides) %}
+  <span class="dot" onclick="currentSlide( {{ g }} )"></span> 
   {% endfor %}
 </div>
 
-{% include pagination.html %}
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
 
-{% include buy-button.html %}
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+    document.getElementById("slideshow_top").scrollIntoView();
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+    document.getElementById("slideshow_top").scrollIntoView();
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+  }
+</script>
+
+{% include back-to-top.html %}

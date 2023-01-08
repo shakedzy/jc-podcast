@@ -1,0 +1,30 @@
+<meta name="author" content="{{ site.full_name }}">
+<meta property="og:type" content="website">
+<meta property="og:title" name="title" content="{{ page.title }}">
+<meta property="og:description" name="description" content="{{ site.full_name }}'s Photo Gallery | {{ site.description }}">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+<meta property="og:image:type" content="{{ site.social_banner.type }}">
+<meta property="og:image:width" content="{{ site.social_banner.width }}">
+<meta property="og:image:height" content="{{ site.social_banner.height }}">
+
+{% if page.layout == 'gallery' %} 
+    {% assign name_split = page.name | split: '.' %}
+    {% assign g = name_split[0] %}
+    {% for gallery in site.data.galleries.overview %}
+        {% if gallery.directory == g %}
+<meta property="og:image" name="image" content="{{ site.url }}{{ site.baseurl }}/assets/photography/{{ g }}/{{ gallery.preview.thumbnail }}">
+<meta property="og:image:secure_url" content="{{ site.url }}{{ site.baseurl }}/assets/photography/{{ g }}/{{ gallery.preview.thumbnail }}" />
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/photography/{{ g }}/{{ gallery.preview.thumbnail }}">
+        {% endif %}
+    {% endfor %}
+{% else %}
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ site.social_banner.image }}">
+<meta property="og:image:secure_url" content="{{ site.url }}{{ site.baseurl }}{{ site.social_banner.image }}" />
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ site.social_banner.image }}">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+<meta name="twitter:creator" content="{{ site.twitter_username }}">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ site.full_name }}'s Photo Gallery | {{ site.description }}">

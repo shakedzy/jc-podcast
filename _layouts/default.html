@@ -1,64 +1,32 @@
----
-layout: compress
----
-
 <!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-  {% include loader.html %} {% include nav.html %} {{content}} {% include
-  footer.html %}
+<html>
 
-  <!-- Hide Loader on load -->
+  {% include analytics.html %}
+  {% include head.html %}
+  {% include social.html %}
 
-  <script>
-    window.onload = function() {
-      document.querySelector(".loader").style.display = "none";
+  <body>
 
-    }
-  </script>
-  <noscript>
-    <style>
-      .loader {
-        display: none;
-      }
-    </style>
-  </noscript>
+    {% include header.html %}
 
-  {% if site.data.settings.color-scheme-selector %} {% include
-  demo-color-scheme-selector.html %} {% endif %}
+    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
 
-  <!-- bootstrap script -->
-  <script src="{{'/assets/js/jquery.min.js' | relative_url}}"></script>
-  <script src="{{'/assets/js/popper.min.js' | relative_url}}"></script>
-  <script src="{{'/assets/js/bootstrap.bundle.min.js' | relative_url}}"></script>
-
-  {% if page.type == "home" or page.path contains "_post" %}
-
-  <script src="{{'/assets/js/green-player/green-audio-player.min.js' | realtive_url}}"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      GreenAudioPlayer.init({
-        selector: ".player",
-        stopOthersOnPlay: true,
+    <script src="{{site.url}}{{site.baseurl}}/assets/js/green-audio-player.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        GreenAudioPlayer.init({
+          selector: ".player",
+          stopOthersOnPlay: true,
+        });
       });
-    });
-  </script>
+    </script>
 
-  {% endif %}
+    {% include footer.html %}
 
-  {% if page.type == "playlist" %}
-  {% include playlist-script.html %}
-  {% endif %}
-
-  {% include google-fonts.html %}
-  {% include fontawesome.html %}
-  {% include search-script.html %}
-
-  <!-- load pages instantly -->
-  <script src="//instant.page/5.1.0" type="module"
-    integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
-</body>
+  </body>
 
 </html>

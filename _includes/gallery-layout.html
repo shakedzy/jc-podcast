@@ -1,0 +1,37 @@
+<div id="image-gallery{% if include.id_number %}-{{ include.id_number }}{% endif %}" class="image-gallery">
+  <div id="gallery-sizer{% if include.id_number %}-{{ include.id_number }}{% endif %}" class="gallery-sizer"></div>
+  {% for picture in include.gallery.pictures %}
+  <div class="image-wrapper">
+    <a href="{{ site.url }}{{ site.baseurl }}/assets/photography/{{ include.gallery.picture_path }}/{{ picture.original }}"
+    data-responsive="{% for size in picture.sizes %} {{ site.url}}{{ site.baseurl }}/assets/photography/{{ include.gallery.picture_path }}/{{ size }} {{ size | split: '-' | last | split: '.' | first | split: 'x' | first | strip }}{% unless forloop.last %},{% endunless %}{% endfor %}" class="image"
+    {% if picture.title or picture.caption or picture.exif %} {% unless picture.exif.hide_exif %}
+      data-sub-html="<div class='lg-toolbar caption' style='padding-top: 5px; padding-bottom: 5px;'>{% if picture.title %}<h4>{{ picture.title | escape }}</h4>{% endif %}{% if picture.caption %}<p>{{ picture.caption | escape }}</p>{% endif %}{% if picture.exif %}<p style='font-style: italic;'> <i class='fa fa-camera' style='height: 1.2em; color: #888888;'></i>&nbsp;&nbsp;{{ picture.exif.model }}{% if picture.exif.lens %}&nbsp;&nbsp;//&nbsp;&nbsp;{{ picture.exif.lens }} {% endif %}<br><i class='fa fa-cogs' style='height: 1.2em; color: #888888;'></i>&nbsp;&nbsp;f/{{ picture.exif.aperture }}&nbsp;&nbsp;{% if picture.exif.hdr %}HDR{% else %}{{ picture.exif.shutter }}s{% endif %}&nbsp;&nbsp;{{ picture.exif.focal }}mm&nbsp;&nbsp;ISO {{ picture.exif.iso }}<br><i class='fa fa-calendar' style='height: 1.2em; color: #888888;'></i>&nbsp;&nbsp;{{ picture.exif.datetime }} {% if picture.exif.gps %}<br><a href='http://maps.google.com/maps/search/{{ picture.exif.gps | escape | escape }}' target='_blank' rel='noopener noreferrer' class='gps-link'><i class='fa fa-map-marker' style='height: 1.2em; color: #888888;'></i>&nbsp;&nbsp;{%- assign coors = picture.exif.gps | split: ',' -%}{% for coor in coors %}{% if coor contains '°' %}{{ coor | escape }}{% else %}{{ coor | slice: 0, 7 }}{% endif %}{% unless coor == coors.last %},&nbsp;{% endunless %}{% endfor %}</a>{% endif %}</p>{% endif %}</div>"
+    {% endunless %}{% endif %}>
+    <img alt="{{ picture.title }}" src="{{ site.url }}{{ site.baseurl }}/assets/photography/{{ include.gallery.picture_path }}/{{ picture.thumbnail }}" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+$(document).ready(function() {
+  var $gallery{% if include.id_number %}{{ include.id_number }}{% endif %} = $("#image-gallery{% if include.id_number %}-{{ include.id_number }}{% endif %}").lightGallery({
+    thumbnail: false,
+    selector: '.image'
+  });
+});
+
+// init isotope
+var $grid{% if include.id_number %}{{ include.id_number }}{% endif %} = $('#image-gallery{% if include.id_number %}-{{ include.id_number }}{% endif %}').isotope({
+  percentPosition: true,
+  columnWidth: '#gallery-sizer{% if include.id_number %}-{{ include.id_number }}{% endif %}',
+  itemSelector: '.image-wrapper',
+  layoutMode: "masonry"
+});
+
+// layout Isotope after each image loads
+$grid{% if include.id_number %}{{ include.id_number }}{% endif %}.imagesLoaded().progress( function() {
+  $grid{% if include.id_number %}{{ include.id_number }}{% endif %}.masonry();
+});
+
+</script>

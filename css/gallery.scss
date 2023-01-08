@@ -1,0 +1,86 @@
+---
+---
+
+$default-width: 33.333333%;
+$default-width-mobile: 100%;
+$default-width-tablet: 50%;
+$maximal-width: 400px;
+$max-content-width: 1200px;
+
+*:not(.wrapper) {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* force scrollbar, prevents initial gap */
+html {
+  overflow-y: scroll;
+}
+
+a.gps-link {
+  color: #AAA;
+}
+a.gps-link:hover {
+  color: #AAA;
+}
+a.gps-link:visited {
+  color: #AAA;
+}
+
+.image-wrapper,
+.gallery-sizer {
+  width: $default-width;
+  max-width: $maximal-width;
+}
+
+.image-gallery {
+
+  display: block;
+  max-width: $max-content-width;
+  margin: auto;
+  margin-top: 20px;
+
+  .image-wrapper {
+    float: left;
+    padding: 3px;
+
+    // hack required if no padding
+    .image {
+      width: 100.1%;
+      width: calc( 100% + 1px );
+      height: 100%;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.caption {
+  position: static;
+  color: #AAA;
+}
+
+.lg-sub-html {
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 500px) {
+  .image-wrapper,
+  .gallery-sizer {
+    width: $default-width-mobile;
+    max-width: $maximal-width;
+}
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1000px) {
+  .image-wrapper,
+  .gallery-sizer {
+    width: $default-width-tablet;
+    max-width: $maximal-width;
+}
+}
