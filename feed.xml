@@ -14,7 +14,7 @@ xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
  
 <channel>
 <title>{{ site.title }}</title>
-<atom:link href="{{'/feed/podcast' | absolute_url}}" rel="self" type="application/rss+xml" />
+<atom:link href="{{site.url}}{{site.baseurl}}/feed.xml" rel="self" type="application/rss+xml" />
 <link>{{ site.url }}{{ site.baseurl }}</link>
 <description>{{ site.description }}</description>
 <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
@@ -56,12 +56,12 @@ xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
         <![CDATA[{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}]]>
     </description>
     <content:encoded>
-        <![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}]]>
+        <![CDATA[{{ ep.content | strip_html |  expand_urls: site.url | cdata_escape }}]]>
     </content:encoded>
 
     <enclosure url="{{site.url}}{{site.baseurl}}/assets/audio/{{ep.audio}}" length="{{ ep.bytes }}" type="audio/mpeg" />
     <itunes:subtitle><![CDATA[{{ ep.paper | strip_html | truncatewords: 20 | expand_urls: site.url | cdata_escape }}]]></itunes:subtitle>
-    <itunes:summary><![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}]]></itunes:summary>
+    <itunes:summary><![CDATA[{{ ep.content | strip_html | expand_urls: site.url | cdata_escape }}]]></itunes:summary>
     <itunes:author>{{ site.full_name }}</itunes:author>
     <itunes:image href="{{site.url}}{{site.baseurl}}{{site.logo}}" />
     <itunes:explicit>no</itunes:explicit>
