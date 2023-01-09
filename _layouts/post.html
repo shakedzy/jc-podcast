@@ -13,6 +13,11 @@ layout: default
     {{ content }}
   </div>
   <center>
+    {% if page.link %}
+    <div>
+      <a href="{{page.link}}" target="_blank">קישור למאמר</a>
+    </div><br>&nbsp;
+    {% endif %}
     <audio controls style="width: 90%">
       <source src="{{site.url}}{{site.baseurl}}/assets/audio/{{page.audio}}" type="audio/mpeg"></audio>
     </audio>

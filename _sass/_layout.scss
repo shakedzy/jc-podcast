@@ -214,12 +214,13 @@
 }
 
 .post-paper {
-    font-size: 32px;
+    font-size: 24px;
     letter-spacing: -1px;
     line-height: 1;
     color: $grey-color;
+    font-weight: 300;
     @include media-query($on-laptop) {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 
