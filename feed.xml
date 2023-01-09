@@ -37,8 +37,8 @@ xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
     <url>{{ site.url }}{{ site.baseurl }}{{ site.logo }}</url>
     <link>{{ site.url }}{{ site.baseurl }}</link>
 </image>
-<itunes:category text="Technology">
-</itunes:category>
+<itunes:category text="Technology"></itunes:category>
+<itunes:category text="Science"></itunes:category>
 {% for ep in site.posts %}
   <item>
     <title>{{ ep.title }}</title>
