@@ -169,21 +169,32 @@ a.no-deco:hover {
 }
 
 
-.social-icons i {
-    font-size: 45px;
-    margin: 15px;
-    color: #999999;
-}
-/*.si:hover{
-    color: #666666;
-}*/
-.fa-spotify:hover {
-    color: #1bd760;
-}
-.fa-podcast:hover {
-    color: #963ccd;
+.banner {
+  position: relative;
 }
 
+.small-banner {
+    display: block;
+}
+
+.large-banner {
+    display: none;
+}
+
+@media screen and (min-width: $on-palm) {
+  .small-banner {
+    display: none;
+  }
+  
+  .large-banner {
+    display: block;
+  }
+}
+
+.podcast-link {
+    height: 40px;
+    padding: 8px;
+}
 
 // Galleries slideshow
 
