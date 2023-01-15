@@ -1,7 +1,7 @@
 # Journal Club Podcast
 **_A podcast in Hebrew about academic papers in Data Science_**
 
-<div align="center"><img src="https://shakedzy.xyz/jc-podcast/assets/images/banner.png" style="height: 350px"></div>
+![banner](assets/images/banner.png)
 
 Listen on: 
 * [Spotify](https://open.spotify.com/show/5QXMiq3CvLAWq8fP0wNQRo)
