@@ -22,4 +22,4 @@ social_banner:
 include: ["_pages"]
 markdown: kramdown
 
-exclude: [LICENSE, LICENSE-CODE.md, LICENSE-IMAGES, README.md, MAKE_YOUR_OWN.md, bower.json]
+exclude: [LICENSE, LICENSE-CODE.md, LICENSE-IMAGES, README.md, MAKE_YOUR_OWN.md, bower.json, Validators.md]
