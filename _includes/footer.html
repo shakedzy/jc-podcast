@@ -1,14 +1,15 @@
 <footer class="site-footer">
 
-  <div class="wrapper">
+  <div class="wrapper" style="direction: rtl;">
 
     <h2 class="footer-heading">{{ site.title }}</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li><a href="mailto:{{ site.ophir_email }}">{{ site.ophir_email }}</a></li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>צרו קשר:</li>
+          <li>אופיר: <a href="mailto:{{ site.ophir_email }}">{{ site.ophir_email }}</a></li>
+          <li>שקד: <a href="mailto:{{ site.email }}">{{ site.email }}</a> | <a href="{{site.url}}">אתר</a></li>
         </ul>
       </div>
 
@@ -18,7 +19,8 @@
 
       <div class="footer-col footer-col-3">
         <ul class="contact-list">
-          <li><a class="page-link" href="{{ site.url }}{{ site.baseurl }}/license/">© {{ site.full_name }}</a></li>
+          <li>© כל הזכויות שמורות לאופיר סרוסי ושקד זיכלינסקי </li>
+          <li><a class="page-link" href="{{ site.url }}{{ site.baseurl }}/license/">רשיונות נוספים</a></li>
         </ul>
       </div>
     </div>
