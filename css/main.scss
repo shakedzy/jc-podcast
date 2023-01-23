@@ -65,7 +65,17 @@ audio::-webkit-media-controls-play-button {
 }
 
 audio::-webkit-media-controls-play-button:hover {
-  background-color: lighten($grey-color-light, 40%);
+  background-color: lighten($title-color, 40%);
+}
+
+.post-preview {
+    direction: rtl;
+    padding-bottom: 40px;  
+    border: 2px solid $grey-color-light; 
+    border-radius: 25px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    box-shadow: 3px 5px 5px darken($grey-color-light, 10%);
 }
 
 .overview-gallery-title {
