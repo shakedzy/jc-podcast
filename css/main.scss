@@ -4,7 +4,6 @@
 @charset "utf-8";
 
 
-
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
@@ -54,21 +53,22 @@ $on-laptop:        800px;
         "syntax-highlighting"
 ;
 
+
 audio::-webkit-media-controls-panel {
-  background-color: #8bd3e9;
+  background-color: #d49985;
 }
 
 audio::-webkit-media-controls-play-button {
-  background-color: #B1D4E0;
+  background-color: #9b6051;
   border-radius: 50%;
 }
 
 audio::-webkit-media-controls-play-button:hover {
-  background-color: rgba(177,212,224, .7);
+  background-color: rgba(253,210,152, .7);
 }
 
 .overview-gallery-title {
-    color: #395267;
+    color: #9b6051;
     width: 100%; 
     font-weight: 300;
     margin-bottom: 0;
@@ -82,11 +82,11 @@ audio::-webkit-media-controls-play-button:hover {
 
 .overview-date-title {
     font-weight: 300; 
-    color: $grey-color
+    color: #d49985
 }
 
 .overview-text {
-    color: #395267;
+    color: black;
 }
 
 .gallery-title {
@@ -100,8 +100,8 @@ audio::-webkit-media-controls-play-button:hover {
 }
 
 a.back-to-top {
-    color: $grey-color; 
-    border: 1px solid $grey-color; 
+    color: #d49985; 
+    border: 1px solid #d49985; 
     padding: 20px; 
     border-radius: 35px; 
     font-weight: 300;
@@ -246,7 +246,7 @@ a.no-deco:hover {
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: #9b6051;
 }
 
 /* Fading animation */
