@@ -55,20 +55,20 @@ $on-laptop:        800px;
 
 
 audio::-webkit-media-controls-panel {
-  background-color: #d49985;
+  background-color: $grey-color-light;
 }
 
 audio::-webkit-media-controls-play-button {
-  background-color: #9b6051;
+  background-color: $grey-color-light;
   border-radius: 50%;
 }
 
 audio::-webkit-media-controls-play-button:hover {
-  background-color: rgba(253,210,152, .7);
+  background-color: lighten($grey-color-light, 40%);
 }
 
 .overview-gallery-title {
-    color: #9b6051;
+    color: #3b5d71;
     width: 100%; 
     font-weight: 300;
     margin-bottom: 0;
@@ -82,7 +82,7 @@ audio::-webkit-media-controls-play-button:hover {
 
 .overview-date-title {
     font-weight: 300; 
-    color: #d49985
+    color: $grey-color
 }
 
 .overview-text {
@@ -100,8 +100,8 @@ audio::-webkit-media-controls-play-button:hover {
 }
 
 a.back-to-top {
-    color: #d49985; 
-    border: 1px solid #d49985; 
+    color: $grey-color; 
+    border: 1px solid $grey-color; 
     padding: 20px; 
     border-radius: 35px; 
     font-weight: 300;
@@ -246,7 +246,7 @@ a.no-deco:hover {
 }
 
 .active, .dot:hover {
-  background-color: #9b6051;
+  background-color: $grey-color;
 }
 
 /* Fading animation */
