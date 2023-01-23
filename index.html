@@ -19,7 +19,7 @@ permalink: /
   {% assign max_galleries_in_silde = 8 %}
 
   {% assign count = 0 %}
-  {% assign align = "left" %}
+  {% assign align = "right" %}
   {% assign gallery_count = 0 %}
   {% for post in site.posts %}
     {% assign mm = gallery_count | modulo: max_galleries_in_silde %}
@@ -39,9 +39,9 @@ permalink: /
       </div>
     {% if count == 1 %}</div>{% endif %}
     {% assign count = count | plus: 1 %}
-    {% assign align = "right" %}
+    {% assign align = "left" %}
     {% if count >= 2 %}
-      {% assign align = "left" %}
+      {% assign align = "right" %}
       {% assign count = 0 %}
     {% endif %}
 
