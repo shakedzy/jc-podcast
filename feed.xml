@@ -45,23 +45,26 @@ xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
     <link>{{ site.url }}{{ site.baseurl }}{{ ep.url }}</link>
     <pubDate>{{ ep.date | date: "%a, %d %b %Y %T %z" }}</pubDate>
     <dc:creator><![CDATA[{{ site.full_name | cdata_escape }}]]></dc:creator>
-{% for category in ep.categories %}
-    <category><![CDATA[{{ category | cdata_escape }}]]></category>
-{% endfor %}
-{% for category in ep.tags %}
-    <category><![CDATA[{{ category | cdata_escape }}]]></category>
-{% endfor %}
+    {% for category in ep.categories %}
+        <category><![CDATA[{{ category | cdata_escape }}]]></category>
+    {% endfor %}
+    {% for category in ep.tags %}
+        <category><![CDATA[{{ category | cdata_escape }}]]></category>
+    {% endfor %}
     <guid isPermaLink="false">ep{{ ep.episode }}</guid>
     <description>
         <![CDATA[{%if ep.paper%}{{ep.paper}}{%else%}{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}{%endif%}]]>
     </description>
     <content:encoded>
-        <![CDATA[{{ ep.content | strip_html |  expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]>
+        <![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]>
     </content:encoded>
-
     <enclosure url="{{site.url}}{{site.baseurl}}/assets/audio/{{ep.audio}}" length="{{ ep.bytes }}" type="audio/mpeg" />
-    <itunes:subtitle><![CDATA[{%if ep.paper%}{{ep.paper}}{%else%}{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}{%endif%}]]></itunes:subtitle>
-    <itunes:summary><![CDATA[{{ ep.content | strip_html | expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]></itunes:summary>
+    <itunes:subtitle>
+        <![CDATA[{%if ep.paper%}{{ep.paper}}{%else%}{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}{%endif%}]]>
+    </itunes:subtitle>
+    <itunes:summary>
+        <![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]>
+    </itunes:summary>
     <itunes:author>{{ site.full_name }}</itunes:author>
     <itunes:image href="{{site.url}}{{site.baseurl}}{{site.logo}}" />
     <itunes:explicit>no</itunes:explicit>
