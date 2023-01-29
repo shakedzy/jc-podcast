@@ -44,7 +44,7 @@ def run(number, link=None, paper=None, arxiv=None, date=None, title=None, overwr
     mp3_file = f'e{number:02d}.mp3'
     mp3_file_path = f'{current_dir}/assets/audio/{mp3_file}'
     if not overwrite and os.path.exists(md_file_path):
-        raise RuntimeError(f"Markdown file for episode {number} already exist. Use -o to overwrite it.")
+        raise RuntimeError(f"Markdown file for episode {number} already exists. Use -o to overwrite it.")
     try:
         link = link or f"https://arxiv.org/abs/{arxiv}"
         paper = paper or get_paper_name_from_arxiv(link)
