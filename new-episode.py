@@ -1,4 +1,5 @@
 import os
+import re
 import argparse
 import requests
 from datetime import datetime
@@ -26,6 +27,14 @@ def get_current_date():
     current_datetime = datetime.now()
     current_date = current_datetime.strftime("%Y-%m-%d")
     return current_date
+
+
+def is_valid_date_format(date_string):
+    date_format = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    if bool(date_format.match(date_string)):
+        return date_string
+    else:
+        raise ValueError(f"{date_format} is not a valid yyyy-MM-dd date")
 
 
 def run(number, link=None, paper=None, arxiv=None, date=None, title=None, overwrite=False):
@@ -70,7 +79,8 @@ if __name__ == "__main__":
     parser.add_argument('-l', '--link', dest='link', help='Paper URL')
     parser.add_argument('-x', '--arxiv', dest='arxiv', help='Paper arXiv ID')
     parser.add_argument('-p', '--paper', dest='paper', help='Paper name')
-    parser.add_argument('-d', '--date', dest='date', help='Release date, must be formatted as yyyy-MM-dd')
+    parser.add_argument('-d', '--date', dest='date', type=is_valid_date_format,
+                        help='Release date, must be formatted as yyyy-MM-dd')
     parser.add_argument('-t', '--title', dest='title', help='Episode title')
     parser.add_argument('-o', '--overwrite', dest='overwrite', default=False, action='store_true',
                         help='Overwrite MD file if exists (default: False)')
