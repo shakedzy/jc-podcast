@@ -53,14 +53,14 @@ xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
     {% endfor %}
     <guid isPermaLink="false">ep{{ ep.episode }}</guid>
     <description>
-        <![CDATA[{%if ep.paper%}{{ep.paper}}{%else%}{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}{%endif%}]]>
+        <![CDATA[{{ ep.content | strip_html | truncatewords: 30 | expand_urls: site.url | cdata_escape }}]]>
     </description>
     <content:encoded>
         <![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]>
     </content:encoded>
     <enclosure url="{{site.url}}{{site.baseurl}}/assets/audio/{{ep.audio}}" length="{{ ep.bytes }}" type="audio/mpeg" />
     <itunes:subtitle>
-        <![CDATA[{%if ep.paper%}{{ep.paper}}{%else%}{{ ep.content | strip_html | truncatewords: 50 | expand_urls: site.url | cdata_escape }}{%endif%}]]>
+        <![CDATA[{{ ep.content | strip_html | truncatewords: 30 | expand_urls: site.url | cdata_escape }}]]>
     </itunes:subtitle>
     <itunes:summary>
         <![CDATA[{{ ep.content | expand_urls: site.url | cdata_escape }}{%if ep.paper%} // {{ep.paper}}{%endif%}]]>
