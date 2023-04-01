@@ -1,10 +1,10 @@
 import os
 import re
+import eyed3
 import argparse
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-from pydub import AudioSegment
 
 
 def get_paper_name_from_arxiv(url):
@@ -16,8 +16,7 @@ def get_paper_name_from_arxiv(url):
 
 def get_mp3_size_and_duration(path):
     file_size = os.path.getsize(path)
-    song = AudioSegment.from_mp3(path)
-    duration = len(song) / 1000
+    duration = eyed3.load(path).info.time_secs
     minutes, seconds = divmod(duration, 60)
     duration_str = "{:02d}:{:02d}".format(int(minutes), int(seconds))
     return file_size, duration_str
